@@ -1,0 +1,14 @@
+.Pokecard-Container{
+	display: inline-block;
+	margin: 5%;
+	width: 196px;
+	height: 196px;
+	border-radius: 16px;
+	padding: 4px;
+	text-align: center;
+	background-color: rgb(144, 144, 144);
+}
+
+.Pokecard-Container * {
+	margin:0;
+}
