@@ -1,0 +1,19 @@
+#MagicEightball-Ball{
+
+	margin:auto;
+	height: 300px;
+	width: 300px;
+	border-radius: 50%;
+	text-align: center;
+	background-color:black;
+	color:white;
+
+}
+
+#MagicEightball-Ball p{
+	padding-top:50%;
+}
+
+#MagicEightball-Ball ul, li{
+	list-style-type: none;
+}
