@@ -14,3 +14,5 @@ test('snapshot', () => {
 	expect(asFragment()).toMatchSnapshot();
 
 });
+
+test('', () => {});
