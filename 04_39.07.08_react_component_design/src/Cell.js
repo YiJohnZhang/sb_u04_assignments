@@ -12,11 +12,17 @@ import "./Cell.css";
  *
  * This handles clicks --- by calling flipCellsAroundMe
  *
- **/
+ */
 
-function Cell({ flipCellsAroundMe, isLit }) {
-  const classes = `Cell ${isLit ? "Cell-lit" : ""}`;
-  return <td className={classes} onClick={flipCellsAroundMe} />;
+function Cell({ coordinates, flipCellsAroundMe, isLit }) {
+	const classes = `Cell ${isLit ? "Cell-lit" : ""}`;
+
+	const clickHandler = (event) => {
+		flipCellsAroundMe(coordinates);
+	}
+
+
+	return <td className={classes} onClick={clickHandler} />;
 }
 
 export default Cell;
