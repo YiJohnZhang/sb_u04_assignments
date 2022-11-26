@@ -13,10 +13,10 @@ function Chips(){
 
 	return (
 
-		<div>
+		<div class="page-container">
 			<p>Crunch!</p>
-			<button onClick={incrementCrunch}>NOM NOM NOM</button>
-			<Link to="/">Go Back</Link>
+			<button onClick={incrementCrunch}>{"NOM".repeat(clickCount + 1)}</button>
+			<p><Link to="/">Go Back</Link></p>
 		</div>
 	
 	);

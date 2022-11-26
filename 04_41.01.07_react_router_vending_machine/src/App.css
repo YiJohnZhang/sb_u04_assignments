@@ -1,8 +1,12 @@
 div{
-	background-color: rgba(0, 0, 0, 0.36);
+	background-color: rgba(0, 0, 0, 0.16);
 	color:#FFF;
 }
-	.wide{width:100%;}
+	.full-width{width:100%;}
+	.nav-link-cont{
+		width:25%;
+		text-align:center;
+	}
 
 .App {
   text-align: center;

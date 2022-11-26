@@ -6,17 +6,36 @@ const ACTIVE_STYLE = {
 
 }
 
-const NavBar = () => (
+function NavBar(){
 	
-	<div id="navigation-bar wide">
+	return (
+	<table id="navigation-bar" className='full-width'>
+		
+		<tr>
+			<td class="nav-link-cont"><NavLink exact activeStyle={ACTIVE_STYLE} to="/">Home</NavLink></td>
+			<td class="nav-link-cont"><NavLink activeStyle={ACTIVE_STYLE} to="/chips">Chips</NavLink></td>
+			<td class="nav-link-cont"><NavLink activeStyle={ACTIVE_STYLE} to="/soda">Soda</NavLink></td>
+			<td class="nav-link-cont"><NavLink activeStyle={ACTIVE_STYLE} to="/sardines">Sardines</NavLink></td>
+		</tr>
 
-		<NavLink exact activeStyle={ACTIVE_STYLE} to="/">Home</NavLink>
-		<NavLink activeStyle={ACTIVE_STYLE} to="/chips">Chips</NavLink>
-		<NavLink activeStyle={ACTIVE_STYLE} to="/soda">Soda</NavLink>
-		<NavLink activeStyle={ACTIVE_STYLE} to="/sardines">Sardines</NavLink>
+	</table>
+	)
 
-	</div>
+};
 
-);
+// const NavBar = () => (
+	
+// 	<table id="navigation-bar" className='full-width'>
+		
+// 		<tr>
+// 			<td class="nav-link-cont"><NavLink exact activeStyle={ACTIVE_STYLE} to="/">Home</NavLink></td>
+// 			<td class="nav-link-cont"><NavLink activeStyle={ACTIVE_STYLE} to="/chips">Chips</NavLink></td>
+// 			<td class="nav-link-cont"><NavLink activeStyle={ACTIVE_STYLE} to="/soda">Soda</NavLink></td>
+// 			<td class="nav-link-cont"><NavLink activeStyle={ACTIVE_STYLE} to="/sardines">Sardines</NavLink></td>
+// 		</tr>
+
+// 	</table>
+
+// );
 
 export default NavBar;
