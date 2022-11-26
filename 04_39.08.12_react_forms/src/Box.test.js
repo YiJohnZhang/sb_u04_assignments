@@ -14,9 +14,3 @@ test('snapshot', () => {
 	expect(asFragment()).toMatchSnapshot();
 
 });
-
-test('fireEvent: remove box', () => {
-
-	
-
-});

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<DocumentFragment>
+  <li>
+    <button
+      data-testid="deleteTodo"
+    >
+      x
+    </button>
+       
+    <span
+      style="text-decoration: none; font-style: normal;"
+    />
+  </li>
+</DocumentFragment>
+`;
+
+exports[`snapshot 2: some content with \`asdf\` 1`] = `
+<DocumentFragment>
+  <li>
+    <button
+      data-testid="deleteTodo"
+    >
+      x
+    </button>
+       
+    <span
+      style="text-decoration: none; font-style: normal;"
+    >
+      asfd
+    </span>
+  </li>
+</DocumentFragment>
+`;

@@ -32,13 +32,13 @@ function NewTodoForm({createToDoEntry}){
 			<label htmlFor="todoText"><strong>Todo Entry</strong>: </label>
 			<input name="todoText"
 				type="text"
-				data-test-id="Todo-input_text"
+				data-testid="Todo-input_text"
 				placeholder="entry..."
 				value={formState.todoText}
 				onChange={handleChange}
 				/>
 
-			<button data-test-id="createTodo" onClick={handleSubmit}>New Item</button>
+			<button data-testid="createTodo" onClick={handleSubmit}>New Item</button>
 
 
 		</form>

@@ -8,7 +8,7 @@ test('smoke test', () => {
 
 });
 
-test('snapshot', () => {
+test('snapshot: empty form', () => {
 	
 	const {asFragment} = render(<NewTodoForm />);
 	expect(asFragment()).toMatchSnapshot();

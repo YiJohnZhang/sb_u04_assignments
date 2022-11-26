@@ -11,7 +11,7 @@ function TodoList(){
 
 	function appendTodoEntry(todoItem){
 
-		const newTodoEntry = {id:uuidv4(), ...todoItem};
+		const newTodoEntry = {id: uuidv4(), ...todoItem};
 		setTodoList([...todoList, newTodoEntry]);
 
 	}

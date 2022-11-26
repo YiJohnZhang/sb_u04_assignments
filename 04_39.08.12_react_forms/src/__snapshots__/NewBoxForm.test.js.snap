@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot: empty form 1`] = `
+<DocumentFragment>
+  <form>
+    <label
+      for="width"
+    >
+      Width: 
+    </label>
+    <input
+      data-test-id="Component-input_width"
+      name="width"
+      type="number"
+      value=""
+    />
+    <label
+      for="height"
+    >
+      Height: 
+    </label>
+    <input
+      name="height"
+      type="number"
+      value=""
+    />
+    <label
+      for="backgroundColor"
+    >
+      Background Color: 
+    </label>
+    <input
+      name="backgroundColor"
+      type="text"
+      value=""
+    />
+    <button
+      data-test-id="submitButtonName"
+    >
+      Submit
+    </button>
+  </form>
+</DocumentFragment>
+`;

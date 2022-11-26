@@ -14,21 +14,3 @@ test('snapshot: empty form', () => {
 	expect(asFragment()).toMatchSnapshot();
 
 });
-
-test('fireEvent: fields update', () => {
-
-	// If not props, I am guess mocking or something to set the form initial state?
-
-});
-
-test('fireEvent: form submits', () => {
-
-	// If not props, I am guess mocking or something to set the form initial state?
-
-});
-
-test('fireEvent: appends box', () => {
-
-	// I am guess mocking or something to set the form initial state?
-
-});
