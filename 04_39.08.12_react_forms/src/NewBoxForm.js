@@ -40,24 +40,26 @@ function NewBoxForm({createNewBox}){
 
 			<label htmlFor="width">Width: </label>
 			<input name="width"
-				data-test-id="Component-input_width"
+				data-testid="box-newBox_input-width"
 				type="number"
 				value={formState.width}
 				onChange={handleChange}/>
 
 			<label htmlFor="height">Height: </label>
 			<input name="height"
+				data-testid="box-newBox_input-height"
 				type="number"
 				value={formState.height}
 				onChange={handleChange}/>
 
 			<label htmlFor="backgroundColor">Background Color: </label>
 			<input name="backgroundColor"
+				data-testid="box-newBox_input-bgColor"
 				type="text"
 				value={formState.backgroundColor}
 				onChange={handleChange}/>
 
-			<button data-test-id="submitButtonName"
+			<button data-testid="submitButtonName"
 				onClick={handleSubmit}>Submit</button>
 
 		</form>

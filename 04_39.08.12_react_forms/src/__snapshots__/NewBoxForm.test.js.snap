@@ -9,7 +9,7 @@ exports[`snapshot: empty form 1`] = `
       Width: 
     </label>
     <input
-      data-test-id="Component-input_width"
+      data-testid="box-newBox_input-width"
       name="width"
       type="number"
       value=""
@@ -20,6 +20,7 @@ exports[`snapshot: empty form 1`] = `
       Height: 
     </label>
     <input
+      data-testid="box-newBox_input-height"
       name="height"
       type="number"
       value=""
@@ -30,12 +31,13 @@ exports[`snapshot: empty form 1`] = `
       Background Color: 
     </label>
     <input
+      data-testid="box-newBox_input-bgColor"
       name="backgroundColor"
       type="text"
       value=""
     />
     <button
-      data-test-id="submitButtonName"
+      data-testid="submitButtonName"
     >
       Submit
     </button>
