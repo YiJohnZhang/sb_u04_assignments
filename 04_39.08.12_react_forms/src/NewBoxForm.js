@@ -25,9 +25,11 @@ function NewBoxForm({createNewBox}){
 	function handleSubmit(evt){
 
 		evt.preventDefault();
-		console.log(evt);
-		console.log(formState);
-		createNewBox();
+		
+		formState.width = Number(formState.width);
+		formState.height = Number(formState.height);
+
+		createNewBox(formState);
 		setFormState(INITIAL_FORM_STATE);
 		
 	}
@@ -39,13 +41,13 @@ function NewBoxForm({createNewBox}){
 			<label htmlFor="width">Width: </label>
 			<input name="width"
 				data-test-id="Component-input_width"
-				type="text"
+				type="number"
 				value={formState.width}
 				onChange={handleChange}/>
 
 			<label htmlFor="height">Height: </label>
 			<input name="height"
-				type="text"
+				type="number"
 				value={formState.height}
 				onChange={handleChange}/>
 

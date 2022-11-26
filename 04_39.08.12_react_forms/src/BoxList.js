@@ -5,22 +5,21 @@ import NewBoxForm from './NewBoxForm';
 
 function BoxList(){
 
-	const DEFAULT_BOXES = [{id: uuidv4(), width:10, height: 10, backgroundColor:'black'}];
+	const DEFAULT_BOXES = [{id: uuidv4(), width:100, height: 100, backgroundColor:'black'}];
 
-	[boxes, setBoxes] = useState(DEFAULT_BOXES);
+	const [boxes, setBoxes] = useState(DEFAULT_BOXES);
 
 	function appendBox(newBox){
 
 		const newBoxProperties = {id:uuidv4(), ...newBox}
-
 		const newBoxList = [...boxes, newBoxProperties];
 		setBoxes(newBoxList);
 
 	}
 
-	function removeBox(boxId){
+	function removeBox(boxID){
 
-		const newBoxList = boxes.filter((element) => element.id !== boxId);
+		const newBoxList = boxes.filter((element) => element.id !== boxID);
 		setBoxes(newBoxList);
 
 	}
