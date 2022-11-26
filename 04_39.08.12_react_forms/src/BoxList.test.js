@@ -24,7 +24,7 @@ test('fireEvent (form): fields update', () => {
 
 test('fireEvent (form): form submits', () => {
 
-	// If not props, I am guess mocking or something to set the form initial state?
+	
 
 });
 
