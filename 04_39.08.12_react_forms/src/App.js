@@ -13,9 +13,11 @@ function App() {
 		<React.Fragment>
 			
 			{/* Part 1: Color Box Maker */}
+			<h1>Color Box Maker</h1>
 			<BoxList />
 
-			{/* Part 2: ToDo App */}
+			{/* Part 2: Todo App */}
+			<h1>Todo List</h1>
 			<TodoList />
 
 		</React.Fragment>

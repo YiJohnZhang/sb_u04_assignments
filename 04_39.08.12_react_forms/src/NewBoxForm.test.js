@@ -8,11 +8,27 @@ test('smoke test', () => {
 
 });
 
-test('snapshot', () => {
+test('snapshot: empty form', () => {
 	
 	const {asFragment} = render(<NewBoxForm />);
 	expect(asFragment()).toMatchSnapshot();
 
 });
 
-test('', () => {});
+test('fireEvent: fields update', () => {
+
+	// If not props, I am guess mocking or something to set the form initial state?
+
+});
+
+test('fireEvent: form submits', () => {
+
+	// If not props, I am guess mocking or something to set the form initial state?
+
+});
+
+test('fireEvent: appends box', () => {
+
+	// I am guess mocking or something to set the form initial state?
+
+});
