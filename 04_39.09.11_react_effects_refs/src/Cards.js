@@ -53,6 +53,9 @@ function Cards(){
 	useEffect(() => {
 
 		if(autoDraw){
+
+			if(cardsRemaining === 0)
+				setAutoDraw(false);
 		
 			timerIntervalID.current = setInterval(drawNextCard, 1000);
 		
@@ -62,7 +65,13 @@ function Cards(){
 
 		}
 
-	}, [autoDraw]);
+		return () => {
+
+			clearInterval(timerIntervalID.current);
+
+		}
+
+	}, [autoDraw, cardsRemaining]);
 	
 	function drawNextCard(){
 
@@ -72,7 +81,7 @@ function Cards(){
 
 	function toggleAutoDraw(){
 
-		setAutoDraw((currentValue) => !currentValue);
+		setAutoDraw((autoDraw) => !autoDraw);
 
 	}
 
