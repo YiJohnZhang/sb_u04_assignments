@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
-function useAxios(initialSet = [], minimizeStateMapping = {}/*resourceURL, options = {}*/){
+function useAxios(initialSet = [], minimizeStateMapping = {}){
 	// use axios instead of JS-native fetch API
 	// I am confused
 	// ok, not very much "useAxios" rather than "appendAxiosCallToState", because all the assignment asks is to do an Axios call rather than a useEffect instance and then append to list of state ._.
@@ -24,24 +24,22 @@ function useAxios(initialSet = [], minimizeStateMapping = {}/*resourceURL, optio
 		try{
 
 			response = await axios.get(resourceURL);
+			console.log(response)
 
 			let responseData = {};
-			for(const [key, value] of Object.entries(minimizeStateMapping)){
-				console.log(value);	// how do I prevent it from executing?
-				console.log(key);
-				console.log(response.data);
-				console.log(eval(value));	// how to avoid eval?
-
-
-			}
+			Object.entries(minimizeStateMapping).forEach(([key, value]) => responseData[key]= eval(value));
+			console.log(responseData);
+				// for any Components using `useAxios`, there is an optional `minimizeStateMapping` property that provides a property name and the resource location in the response object
+					// `PlayingCardList.js`, line 9 & `Pokedex.js`, line 11-16
+					// 1. how do I avoid using eval??
+					// 2. what might be some safe time to use `eval`?
 
 			// Object.entries(minimizeStateMapping).forEach(([key, value]) => {
 			// 	console.log(value)
 			// 	console.log(key)
 			// 	console.log(response.data[value])
 			// 	responseData[key]= response.data[value]});
-			// console.log(responseData);
-
+			
 			// setSet((set) => [...set, { ...response.data, id: uuidv4() }]);
 			setSet((set) => [...set, { ...response.data, id: uuidv4() }]);
 
