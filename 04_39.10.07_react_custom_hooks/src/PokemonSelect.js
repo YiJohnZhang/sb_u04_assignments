@@ -9,6 +9,10 @@ function PokemonSelect({ add, pokemon = pokemonList }) {
     setPokeIdx(evt.target.value);
   };
 
+  function addPokemon(pokemon){
+	  add("https://pokeapi.co/api/v2/pokemon", {pathString:pokemon})
+  }
+
   return (
     <div>
       <select onChange={handleChange}>
@@ -18,8 +22,8 @@ function PokemonSelect({ add, pokemon = pokemonList }) {
           </option>
         ))}
       </select>
-      <button onClick={() => add(pokemon[pokeIdx])}>Catch one!</button>
-      <button onClick={() => add(choice(pokemon))}>I'm feeling lucky</button>
+      <button onClick={() => addPokemon(pokemon[pokeIdx])}>Catch one!</button>
+      <button onClick={() => addPokemon(choice(pokemon))}>I'm feeling lucky</button>
     </div>
   );
 }
