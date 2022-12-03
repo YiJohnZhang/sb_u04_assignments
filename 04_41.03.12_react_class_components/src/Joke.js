@@ -29,7 +29,7 @@ class Joke extends React.Component{
 	}
 
 	componentDidUpdate(previousProps, previousState, snapshot){
-		// follow this suggestion: https://stackoverflow.com/a/39155024
+		// followed this suggestion: https://stackoverflow.com/a/39155024
 
 		// console.log(this.props.votes);
 		//ok, so the problem with the component not updating is that I am getting it from props. but since state has changed, props receieved by component changes; but yet state doesn't change yet?
