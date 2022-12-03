@@ -1,74 +1,117 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import Joke from "./Joke";
 import "./JokeList.css";
 
-function JokeList({ numJokesToGet = 10 }) {
-  const [jokes, setJokes] = useState([]);
+class JokeList extends React.Component{
 
-  /* get jokes if there are no jokes */
+	constructor(props){
 
-  useEffect(function() {
-    async function getJokes() {
-      let j = [...jokes];
-      let seenJokes = new Set();
-      try {
-        while (j.length < numJokesToGet) {
-          let res = await axios.get("https://icanhazdadjoke.com", {
-            headers: { Accept: "application/json" }
-          });
-          let { status, ...jokeObj } = res.data;
-  
-          if (!seenJokes.has(jokeObj.id)) {
-            seenJokes.add(jokeObj.id);
-            j.push({ ...jokeObj, votes: 0 });
-          } else {
-            console.error("duplicate found!");
-          }
-        }
-        setJokes(j);
-      } catch (e) {
-        console.log(e);
-      }
-    }
+		super(props);
+		this.numberOfJokes = props.numJokesToGet;
 
-    if (jokes.length === 0) getJokes();
-  }, [jokes, numJokesToGet]);
+		this.state = {
+			jokes: []
+		};
 
-  /* empty joke list and then call getJokes */
+		this.generateNewJokes = this.generateNewJokes.bind(this);
+		this.vote = this.vote.bind(this);
 
-  function generateNewJokes() {
-    setJokes([]);
-  }
+	}
 
-  /* change vote for this id by delta (+1 or -1) */
+	async getJokes(){
 
-  function vote(id, delta) {
-    setJokes(allJokes =>
-      allJokes.map(j => (j.id === id ? { ...j, votes: j.votes + delta } : j))
-    );
-  }
+		let currentJokeList = [...this.state.jokes];
+		let appendedJokes = new Set();
+		
+		try{
 
-  /* render: either loading spinner or list of sorted jokes. */
+			while(currentJokeList.length < this.numberOfJokes){
+				
+				await setTimeout('', 300)
+				let response = await axios.get('https://icanhazdadjoke.com',
+					{headers:{ Accept: 'application/json' }});
+				
+				const { status, ...jokeObject } = response.data;
 
-  if (jokes.length) {
-    let sortedJokes = [...jokes].sort((a, b) => b.votes - a.votes);
-  
-    return (
-      <div className="JokeList">
-        <button className="JokeList-getmore" onClick={generateNewJokes}>
-          Get New Jokes
-        </button>
-  
-        {sortedJokes.map(j => (
-          <Joke text={j.joke} key={j.id} id={j.id} votes={j.votes} vote={vote} />
-        ))}
-      </div>
-    );
-  }
+				if(!appendedJokes.has(jokeObject.id)){
+					appendedJokes.add(jokeObject.id);
+					currentJokeList.push({...jokeObject, votes:0});
+				}					
 
-  return null;
+			}
 
+			// console.log(this.state)
+			this.setState({jokes: currentJokeList})
+
+		}catch(error){
+			console.log(error);
+		}
+
+	}
+
+	componentDidMount(){
+
+		if (this.state.jokes.length <= this.numberOfJokes)
+			this.getJokes();
+
+	}
+
+	componentDidUpdate(){
+
+		if (this.state.jokes.length != this.numberOfJokes)
+			this.getJokes();
+			// if I did `this.state.joke.length  <= ...) it will warn max call depth because e/ call when updating the state will be fasle and trigger a new cal, i guess.
+
+		
+
+	}
+
+	/* empty joke list and then call getJokes */
+	generateNewJokes(){
+		this.setState({jokes: []});
+			// remember to bind business logic -___________-
+	}
+
+	/* change vote for this id by delta (+1 or -1) */
+	vote(id, delta){
+
+		this.setState(() => ({
+
+			jokes: this.state.jokes.map((joke) => (
+				joke.id === id ? { ...joke, votes: joke.votes + delta} : joke))
+			
+		}));
+
+	}
+
+	render(){
+
+		// if(!this.state.jokes.length)
+		// 	return null;
+
+		const sortedJokesList = [...this.state.jokes].sort((a, b) => b.votes - a.votes);
+
+		return (
+		<div className="JokeList">
+		
+			<button className="JokeList-getmore" onClick={this.generateNewJokes}>
+				Get New Jokes
+			</button>
+	  
+			{sortedJokesList.map(joke => (
+				<Joke text={joke.joke} key={joke.id} id={joke.id} votes={joke.votes} vote={this.vote} />
+			))}
+		
+		</div>
+		);
+
+	}
+
+}
+
+JokeList.defaultProps = {
+	numJokesToGet: 10
 }
 
 export default JokeList;
