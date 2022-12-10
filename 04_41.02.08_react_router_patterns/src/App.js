@@ -1,4 +1,9 @@
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
+
+import DogList from './DogList';
+import DogDetails from './DogDetails';
+
 import duke from './imgs/duke.jpg';
 import perry from './imgs/perry.jpg';
 import tubby from './imgs/tubby.jpg';
