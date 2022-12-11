@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -8,6 +7,7 @@ import ColorFactory from './ColorFactory';
 import NewColor from './NewColor';
 import Color from './Color';
 
+import './App.css';
 import duke from './imgs/duke.jpg';
 import perry from './imgs/perry.jpg';
 import tubby from './imgs/tubby.jpg';
@@ -15,7 +15,7 @@ import whiskey from './imgs/whiskey.jpg';
 
 function App(props) {
 
-	const [colorSet, setColorSet] = useState(props.colors);
+	const [colorSet, asdf] = useState(props.colors);
 
 	function findDog(dogName){
 
@@ -26,14 +26,20 @@ function App(props) {
 
 	function findColor(colorName){
 		
-		const colorElement = colorSet.find((element) => element.name.toLowerCase() === colorName.toLowerCase());
+		const colorElement = colorSet.find((element) => element.colorName.toLowerCase() === colorName.toLowerCase());
 		return colorElement;
 
 	}
 
 	function addNewColor(colorEntry){
+	
+		// const newColorSet = [...colorSet, colorEntry];
+		// console.log(newColorSet === colorSet);
+			// how come this doesn't updateee??? oh, i get it. it does work. but since it isn't a router Link, it loses the state.
 
-		setColorSet([...colorSet, colorEntry]);
+		// setColorSet(() => newColorSet);
+		asdf([...colorSet, colorEntry]);
+		console.log(colorSet)
 
 	}
 
@@ -77,16 +83,16 @@ function App(props) {
 App.defaultProps = {
 	colors: [
 	{
-		name: 'red',
+		colorName: 'red',
 		color: '#F00'
 	},
 	{
-		name: 'green',
+		colorName: 'green',
 		color: '#0F0'
 
 	},
 	{
-		name: 'blue',
+		colorName: 'blue',
 		color: '#00F'
 
 	}

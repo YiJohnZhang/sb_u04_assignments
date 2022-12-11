@@ -1,17 +1,15 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function Color({findColor}){
 
 	const params = useParams();
-	const {name, color} = findColor(params.colorName);
-
-	
-
+	const {colorName, color} = findColor(params.colorName);
 
 	return(
 	<div style={{backgroundColor: color}}>
-		<p>This is {name}</p>
+		<p>This is {colorName}.</p>
+		<Link to="/colors">Go Back</Link>
 	</div>
 	);
 

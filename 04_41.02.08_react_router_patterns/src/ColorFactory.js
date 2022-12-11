@@ -1,9 +1,13 @@
+import { Link } from 'react-router-dom';
+
 const ColorFactory = ({colorList}) => (
 	<div>
 		<p>Welcome to the color factory</p>
-		<a href="/colors/new">Add a Color</a>
+		<Link to="/colors/new">Add a Color</Link>
 		<ul>
-			{colorList.map((colorEntry) => <li><a href={`/colors/${colorEntry.name}`}>{colorEntry.name.toLowerCase()}</a></li>)}
+			{colorList.map((colorEntry) => (
+				<li><Link to={`/colors/${colorEntry.colorName}`}>{colorEntry.colorName}</Link></li>
+			))}
 		</ul>
 	</div>
 	);
