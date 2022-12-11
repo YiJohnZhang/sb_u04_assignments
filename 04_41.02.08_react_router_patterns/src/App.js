@@ -1,22 +1,96 @@
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import DogList from './DogList';
 import DogDetails from './DogDetails';
+import ColorFactory from './ColorFactory';
+import NewColor from './NewColor';
+import Color from './Color';
 
 import duke from './imgs/duke.jpg';
 import perry from './imgs/perry.jpg';
 import tubby from './imgs/tubby.jpg';
-import whiskey from './imgs/whisky.jpg';
+import whiskey from './imgs/whiskey.jpg';
 
-function App() {
+function App(props) {
+
+	const [colorSet, setColorSet] = useState(props.colors);
+
+	function findDog(dogName){
+
+		const dogElement = props.dogs.find((element) => element.name.toLowerCase() === dogName.toLowerCase());
+		return dogElement;
+
+	}
+
+	function findColor(colorName){
+		
+		const colorElement = colorSet.find((element) => element.name.toLowerCase() === colorName.toLowerCase());
+		return colorElement;
+
+	}
+
+	function addNewColor(colorEntry){
+
+		setColorSet([...colorSet, colorEntry]);
+
+	}
+
 	return (
 	<div className="App">
+		<Switch>
+			<Route exact path="/dogs">
+				<DogList dogList={props.dogs}/>
+			</Route>
+			{/* <Route
+				path="/dogs/:name"
+				render={(props) => {
+					<>
+						<DogDetails dogObject={findDog(props.match.params.name)}/>
+						<p>asdf: {props.match}</p>
+						<p>1</p>
+					</>
+					}} >
+					https://stackoverflow.com/a/45901369
+			</Route> */}
+			<Route path="/dogs/:name">
+				<DogDetails findDog={findDog}/>
+			</Route>
+			{/* <Redirect to="/dogs" /> */}
+			<Route exact path="/colors">
+				<ColorFactory colorList={colorSet}/>
+			</Route>
+			<Route exact path="/colors/new">
+				<NewColor addColor={addNewColor}/>
+			</Route>
+			<Route path="/colors/:colorName">
+				<Color findColor={findColor}/>
+			</Route>
+			<Redirect to="/colors" />
+		</Switch>
 	</div>
 	);
+	
 }
 
 App.defaultProps = {
+	colors: [
+	{
+		name: 'red',
+		color: '#F00'
+	},
+	{
+		name: 'green',
+		color: '#0F0'
+
+	},
+	{
+		name: 'blue',
+		color: '#00F'
+
+	}
+	],
 	dogs: [
 	{
 		name: "Whiskey",
